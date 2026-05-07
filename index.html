@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>무화과 가온재배 난방비 예측</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">ASOS 시간자료 기반</p>
+            <h1>무화과 가온재배 난방비 예측</h1>
+          </div>
+          <div class="status-pill" id="dataStatus">예시 자료 사용 중</div>
+        </header>
+
+        <section class="grid">
+          <aside class="panel inputs" aria-label="입력 조건">
+            <div class="panel-head">
+              <h2>조건 입력</h2>
+              <button class="icon-button" id="resetButton" title="기본값 복원" aria-label="기본값 복원">
+                ↺
+              </button>
+            </div>
+
+            <label>
+              <span>지역</span>
+              <select id="region"></select>
+            </label>
+
+            <div class="two-cols">
+              <label>
+                <span>폭 m</span>
+                <input id="width" type="number" min="1" step="0.1" value="7" />
+              </label>
+              <label>
+                <span>길이 m</span>
+                <input id="length" type="number" min="1" step="0.1" value="100" />
+              </label>
+            </div>
+
+            <div class="two-cols">
+              <label>
+                <span>측고 m</span>
+                <input id="sideHeight" type="number" min="0.5" step="0.1" value="2.5" />
+              </label>
+              <label>
+                <span>동고 m</span>
+                <input id="ridgeHeight" type="number" min="0.5" step="0.1" value="5" />
+              </label>
+            </div>
+
+            <label>
+              <span>목표 실내온도 °C</span>
+              <input id="targetTemp" type="range" min="6" max="18" step="1" value="12" />
+              <strong id="targetTempLabel">12°C</strong>
+            </label>
+
+            <label>
+              <span>피복재</span>
+              <select id="cover">
+                <option value="6.2">단층비닐 U=6.2</option>
+                <option value="4.1" selected>이중비닐 U=4.1</option>
+                <option value="3.5">보온성 강화피복 U=3.5</option>
+              </select>
+            </label>
+
+            <label>
+              <span>보온커튼</span>
+              <select id="curtain">
+                <option value="1">없음</option>
+                <option value="0.75">단층 보온커튼</option>
+                <option value="0.55" selected>다겹 보온커튼</option>
+              </select>
+            </label>
+
+            <div class="two-cols">
+              <label>
+                <span>난방효율</span>
+                <input id="efficiency" type="number" min="0.1" max="1.5" step="0.05" value="1" />
+              </label>
+              <label>
+                <span>전력단가 원/kWh</span>
+                <input id="price" type="number" min="1" step="1" value="53" />
+              </label>
+            </div>
+
+            <label class="file-picker">
+              <span>ASOS CSV 업로드</span>
+              <input id="csvFile" type="file" accept=".csv,text/csv" />
+            </label>
+          </aside>
+
+          <section class="panel results" aria-label="예측 결과">
+            <div class="summary-row">
+              <article>
+                <span>외피면적</span>
+                <strong id="surfaceArea">-</strong>
+              </article>
+              <article>
+                <span>난방디그리아워</span>
+                <strong id="degreeHours">-</strong>
+              </article>
+              <article>
+                <span>기간 난방부하</span>
+                <strong id="loadKwh">-</strong>
+              </article>
+              <article>
+                <span>예상 난방비</span>
+                <strong id="cost">-</strong>
+              </article>
+            </div>
+
+            <div class="chart-wrap">
+              <canvas id="monthlyChart" width="960" height="360" aria-label="월별 난방비 그래프"></canvas>
+            </div>
+
+            <div class="table-head">
+              <h2>월별 산정 결과</h2>
+              <button id="downloadCsv">CSV</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>월</th>
+                    <th>유효 시간</th>
+                    <th>난방디그리아워</th>
+                    <th>난방부하 kWh</th>
+                    <th>예상비용 원</th>
+                  </tr>
+                </thead>
+                <tbody id="monthlyRows"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>
