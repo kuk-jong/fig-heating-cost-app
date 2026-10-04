@@ -42,3 +42,6 @@ nav{padding:0 3.5%;gap:14px;background:#fafbfd}nav a{padding:17px 13px;font-size
 
 /* Compact the title area marked in the review screenshot. */
 main{padding-top:14px}.page-heading{margin-bottom:12px;gap:10px}.page-heading p{margin:2px 0;line-height:1.5}#pageKicker{margin:0 0 3px;font-size:9px}.page-heading h1{font-size:22px;line-height:1.35}.page-heading .badge{padding:5px 9px}@media(max-width:700px){main{padding-top:12px}.page-heading{margin-bottom:10px}.page-heading h1{font-size:20px}}
+
+/* Main workspace: compact fixed-open greenhouse preview. */
+.viewer.main-viewer{height:350px}@media(max-width:700px){.viewer.main-viewer{height:280px}}
