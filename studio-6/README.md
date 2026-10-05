@@ -2,8 +2,12 @@
 
 원본 보존 기준: 9e780bc9125928809439219f2e43395743e418de. 이 구현은 새 `studio-6/` 폴더만 추가합니다. 루트, integrated-3d, v2-3d와 배포 설정은 변경하지 않습니다.
 
+## 설계 문서
+- [아키텍처·파일별 수정 안내](ARCHITECTURE.md)
+- [UML·입력 변경·클라우드 저장 흐름](UML.md)
+
 ## 실행
-정적 서버에서 이 폴더의 index.html을 엽니다. GitHub Pages 배포 후 주소는 `https://kuk-jong.github.io/fig-heating-cost-app/studio-6/`입니다. 별도 브랜치만 존재하면 이 URL은 아직 게시되지 않습니다. 여섯 화면은 `#design`, `#energy`, `#production`, `#investment`, `#business`, `#simulation` 해시로 직접 접근합니다.
+정적 서버에서 이 폴더의 index.html을 엽니다. GitHub Pages 배포 후 주소는 `https://kuk-jong.github.io/fig-heating-cost-app/studio-6/`입니다. v0.14는 main에 병합되어 공개 배포되었습니다. 여섯 화면은 `#design`, `#energy`, `#production`, `#investment`, `#business`, `#simulation` 해시로 직접 접근합니다.
 
 ## 구현 기능
 - 온실설계 v0.4: 상자별 식재 배치, 동별 열 수·열당 주수·치수선, 주간/열간 상세도, 개별 상자 3D 표현과 사용자 제공 현장 참고 사진 2장. 평면과 3D는 동일한 식재 중심 간격을 사용합니다. 상자 크기와 수형은 개략 표현이며 작업통로를 자동 차감하지 않습니다.
